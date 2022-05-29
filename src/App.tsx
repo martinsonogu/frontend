@@ -5,6 +5,7 @@ import { GlobalUrls } from "enums/GlobalUrls";
 import { RoleEnum } from "enums/role";
 import { UserModel } from "models/user";
 import CommunityStandards from "pages/communityStandards/CommunityStandards";
+import HomeModule from "pages/home/Home.module";
 import Login from "pages/login/Login";
 import PrivacyPolicy from "pages/privacyPolicy/PrivacyPolicy";
 import Register from "pages/register/Register";
@@ -69,19 +70,9 @@ function App() {
         </Route>
 
         <Route element={<Protected user={user} />}>
-          <Route
-            path={`/${GlobalUrls.home}`}
-            element={
-              <main className={styles.notFound}>
-                <p>Protected</p>
-              </main>
-            }
-          />
+          <Route path={`/${GlobalUrls.home}`} element={<HomeModule />} />
         </Route>
       </Routes>
-      <div className={styles.footer}>
-        <Footer />
-      </div>
     </div>
   );
 }
@@ -93,6 +84,9 @@ const WildRoute = (props: any) => {
         <Header />
       </div>
       <Outlet />
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </div>
   );
 };
@@ -104,6 +98,9 @@ const Authentication = (props: any) => {
         <Header />
       </div>
       <Outlet />
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </div>
   );
 };
@@ -118,6 +115,9 @@ const UserOnboarding = (props: { user: UserModel }) => {
           <Header />
         </div>
         <Outlet />
+        <div className={styles.footer}>
+          <Footer />
+        </div>
       </div>
     );
   }
@@ -129,7 +129,7 @@ const Protected = (props: { user: UserModel }) => {
 
   if (user?.bearerToken && RoleEnum.isValid(user?.role)) {
     return (
-      <div>
+      <div className={styles.protected}>
         <div className={styles.header}>
           <Header isProtected={true} />
         </div>

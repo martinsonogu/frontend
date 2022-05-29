@@ -1,0 +1,15 @@
+.sideNavigation {
+  color: #384853;
+  font-size: 20px;
+  font-weight: 600;
+  .item {
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+    padding: 18px 0;
+    &:hover,
+    &:active {
+      color: #077f7f;
+    }
+  }
+}

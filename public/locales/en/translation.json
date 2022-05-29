@@ -140,5 +140,10 @@
     "search": "Search",
     "message_tip": "Message",
     "notification_tip": "Notification"
+  },
+  "side_navigation": {
+    "home": "Home",
+    "chats": "Chats",
+    "connections": "Connections"
   }
 }

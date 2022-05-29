@@ -13,3 +13,7 @@ export enum GlobalUrls {
   chat = "chat",
   notification = "notification",
 }
+
+export enum HomeUrls {
+  base = "",
+}

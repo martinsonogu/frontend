@@ -13,4 +13,10 @@
   .footer {
     text-align: center;
   }
+
+  .protected {
+    display: grid;
+    height: 100%;
+    grid-template-rows: auto 1fr;
+  }
 }

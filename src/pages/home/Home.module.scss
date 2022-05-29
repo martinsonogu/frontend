@@ -1,0 +1,21 @@
+.homeModule {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 100%;
+  width: 100%;
+
+  .sideNav,
+  .content {
+    padding-top: 50px;
+  }
+
+  .sideNav {
+    border-right: solid 1px #e3e6ea;
+  }
+  .content {
+    padding-left: 20px;
+  }
+}

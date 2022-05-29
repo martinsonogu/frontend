@@ -14,7 +14,7 @@ export interface UserState {
   origin: OriginModel;
   expertise: ExpertiseModel;
   background: BackgroundModel;
-  avatar: AvatarModel;
+  avatar: string;
   bio: BioModel;
 }
 
@@ -53,7 +53,7 @@ export const userSlice = createSlice({
       state.background = action.payload;
     },
     onboardingUpdateAvatar: (state, action: PayloadAction<AvatarModel>) => {
-      state.avatar = action.payload;
+      state.avatar = action.payload.data;
     },
     onboardingUpdateBio: (state, action: PayloadAction<BioModel>) => {
       state.bio = action.payload;
