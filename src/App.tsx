@@ -34,9 +34,6 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <div className={styles.header}>
-        <Header />
-      </div>
       <Notification
         text={notificationRed.text}
         direction={notificationRed.direction}
@@ -44,16 +41,20 @@ function App() {
         refresh={notificationRed.value}
       />
       <Routes>
-        <Route
-          path="*"
-          element={
-            <main className={styles.notFound}>
-              <p>There is nothing here!</p>
-            </main>
-          }
-        />
-        <Route path={`/${GlobalUrls.login}`} element={<Login />} />
-        <Route path={`/${GlobalUrls.register}`} element={<Register />} />
+        <Route element={<WildRoute />}>
+          <Route
+            path="*"
+            element={
+              <main className={styles.notFound}>
+                <p>There is nothing here!</p>
+              </main>
+            }
+          />
+        </Route>
+        <Route element={<Authentication />}>
+          <Route path={`/${GlobalUrls.login}`} element={<Login />} />
+          <Route path={`/${GlobalUrls.register}`} element={<Register />} />
+        </Route>
 
         <Route element={<UserOnboarding user={user} />}>
           <Route path={`/${GlobalUrls.role}`} element={<Role />} />
@@ -85,11 +86,40 @@ function App() {
   );
 }
 
+const WildRoute = (props: any) => {
+  return (
+    <div>
+      <div className={styles.header}>
+        <Header />
+      </div>
+      <Outlet />
+    </div>
+  );
+};
+
+const Authentication = (props: any) => {
+  return (
+    <div>
+      <div className={styles.header}>
+        <Header />
+      </div>
+      <Outlet />
+    </div>
+  );
+};
+
 const UserOnboarding = (props: { user: UserModel }) => {
   const user = props.user;
 
   if (user?.bearerToken) {
-    return <Outlet />;
+    return (
+      <div>
+        <div className={styles.header}>
+          <Header />
+        </div>
+        <Outlet />
+      </div>
+    );
   }
   return <Navigate to={`/${GlobalUrls.login}`} />;
 };
@@ -98,7 +128,14 @@ const Protected = (props: { user: UserModel }) => {
   const user = props.user;
 
   if (user?.bearerToken && RoleEnum.isValid(user?.role)) {
-    return <Outlet />;
+    return (
+      <div>
+        <div className={styles.header}>
+          <Header isProtected={true} />
+        </div>
+        <Outlet />
+      </div>
+    );
   }
   return <Navigate to={`/${GlobalUrls.role}`} />;
 };

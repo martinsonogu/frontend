@@ -133,5 +133,12 @@
     "sample_bio": "Sample Bio",
     "successful": "user bio successfully updated",
     "failed": "error occured while updating user bio"
+  },
+  "header": {
+    "company_name": "REGENATE",
+    "education_navigation": "Education",
+    "search": "Search",
+    "message_tip": "Message",
+    "notification_tip": "Notification"
   }
 }

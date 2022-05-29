@@ -9,4 +9,7 @@ export enum GlobalUrls {
   background = "background",
   avatar = "avatar",
   bio = "bio",
+  learn = "learn",
+  chat = "chat",
+  notification = "notification",
 }

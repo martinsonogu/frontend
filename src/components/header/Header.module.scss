@@ -1,6 +1,17 @@
 .header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 40px;
+  align-items: center;
   margin-left: (101/16) + rem;
   background-color: #fff;
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  .search {
+    text-align: center;
+  }
   svg {
     margin: 12px 10px 14px 0;
   }
@@ -9,5 +20,12 @@
     font-size: 20px;
     line-height: 30px;
     color: #00354f;
+  }
+
+  .authenticated {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    column-gap: 10px;
   }
 }
